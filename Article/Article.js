@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Coding can be hard!',
+    date: 'Dec 13, 2019',
+    firstParagraph: 'this is Friday the 13th',
+    secondParagraph: 'jdsnjknsdjcnsbsljdfncsljfnlsnclsnclsnlsdnlsdn',
+    thirdParagraph: 'nflsfnlafnqlehfdnlkadnflkeajdsnlkednjkewnlfnkdjk lfnlsdkncclsfnsldfncslkdfncps;fkjnclsk a.jfclkslfnclfkanfclcknadflcknsdlnckjsd l.fajnlcsnfkcnsdlcnslnc,ssldnckjsdn',
   }
 ];
 
@@ -112,3 +119,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articles = document.querySelector('.articles');
+
+data.forEach(function (articleData) {
+  articles.appendChild(aData(articleData.title, articleData.date, articleData.firstParagraph, articleData.secondParagraph, articleData.thirdParagraph))
+});
+
+function aData(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const aArticle = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const pDate = document.createElement('p');
+  const pGraph1 = document.createElement('p');
+  const pGraph2 = document.createElement('p');
+  const pGraph3 = document.createElement('p');
+
+const expandButton = document.createElement('span');
+
+//set text
+articleTitle.textContent = title;
+pDate.textContent = date;
+pGraph1.textContent = firstParagraph;
+pGraph2.textContent = secondParagraph;
+pGraph3.textContent = thirdParagraph;
+expandButton.textContent = 'here!';
+
+//Appends
+aArticle.appendChild(articleTitle);
+aArticle.appendChild(pDate);
+aArticle.appendChild(pGraph1);
+aArticle.appendChild(pGraph2);
+aArticle.appendChild(pGraph3);
+aArticle.appendChild(expandButton);
+
+
+//class list
+aArticle.classList.add('article');
+pDate.classList.add('date');
+expandButton.classList.add('expandButton');
+expandButton.addEventListener('click', function (event) {
+  aArticle.classList.toggle('article-open')
+})
+
+  return aArticle;
+}
+

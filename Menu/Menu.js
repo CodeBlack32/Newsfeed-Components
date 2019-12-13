@@ -21,6 +21,8 @@ let menuItems = [
 
   The function takes an array as its only argument.
 
+
+
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
   Add those items to the <ul>
 
@@ -33,3 +35,45 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+function seeMenu (data) {
+  const aMenu = document.createElement('div');
+  const aList = document.createElement('ul');
+  // const students = document.createElement('li');
+  // const faculty = document.createElement('li');
+  // const whatsNew = document.createElement('li');
+  // const techTrends = document.createElement('li');
+  // const music = document.createElement('li');
+  // const logOut = document.createElement('li');
+  const menuItems = data.map(item => {
+    const listItem = document.createElement('li')
+   listItem.textContent = item
+    return listItem
+  })
+
+
+  aMenu.appendChild(aList);
+  for (let menuItem of menuItems) {
+    aList.appendChild(menuItem)
+  }
+
+  // aList.appendChild(listItem);
+  // aList.appendChild(listItem);
+  // aList.appendChild(listItem);
+  // aList.appendChild(listItem);
+  // aList.appendChild(listItem);
+  // aList.appendChild(listItem);
+
+  aMenu.classList.add('menu');
+
+  const menuButton = document.querySelector('.header');
+menuButton.addEventListener('click', function (event) {
+    aMenu.classList.toggle('menu--open')
+    console.log('you clicked')
+  })
+
+
+  return aMenu
+}
+
+document.querySelector('.header').appendChild(seeMenu(menuItems))
